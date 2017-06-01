@@ -3,9 +3,12 @@
 set -ex
 root=$(pwd)
 
+ami=$(cat ami/ami)
+
 terraform plan \
   pcf-pipelines/tasks/install-pcf-aws/terraform \
   -state terraform-state/terraform.tfstate \
+  -var "opsman_ami=${ami}" \
   -out terraform.tfplan
 
 terraform apply \
