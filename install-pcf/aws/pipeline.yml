@@ -161,8 +161,6 @@ jobs:
   plan:
   - aggregate:
     - get: pcf-pipelines 
-      trigger: true
-      passed: [import-stemcell]
     - get: pivnet-product
       resource: pivnet-elastic-runtime
       passed: [import-stemcell]
