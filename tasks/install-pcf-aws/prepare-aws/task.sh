@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -ex
-root=$(pwd)
 
 ami=$(cat ami/ami)
 
@@ -15,5 +14,5 @@ terraform plan \
   pcf-pipelines/tasks/install-pcf-aws/terraform
 
 terraform apply \
-  -state-out $root/terraform-state/terraform.tfstate \
+  -state-out terraform-state-output/terraform.tfstate \
   terraform.tfplan
