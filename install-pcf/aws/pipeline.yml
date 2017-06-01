@@ -136,26 +136,6 @@ jobs:
       pcf_opsman_admin: {{OPSMAN_USER}}
       pcf_opsman_admin_passwd: {{OPSMAN_PASSWORD}}
 
-- name: import-stemcell
-  plan:
-  - aggregate:
-    - get: pcf-pipelines
-      trigger: true
-      passed: [deploy-director]
-    - get: pivnet-product
-      resource: pivnet-elastic-runtime
-      params:
-        globs:
-        - "*pivotal"
-  - task: upload-stemcell
-    file: pcf-pipelines/tasks/upload-stemcell/task.yml
-    params:
-      PRODUCT: cf
-      IAAS_TYPE: aws
-      OPSMAN_USERNAME: {{OPSMAN_USER}}
-      OPSMAN_PASSWORD: {{OPSMAN_PASSWORD}}
-      OPSMAN_URI: {{OPSMAN_URI}}
-
 - name: upload-ert
   serial: true
   plan:
@@ -163,17 +143,19 @@ jobs:
     - get: pcf-pipelines 
     - get: pivnet-product
       resource: pivnet-elastic-runtime
-      passed: [import-stemcell]
       params:
         globs:
         - "*pivotal"
   - task: upload-tile
-    file: pcf-pipelines/tasks/upload-product/task.yml
+    file: pcf-pipelines/tasks/upload-product-and-stemcell/task.yml
     params:
-      OPSMAN_URI: {{OPSMAN_URI}}
-      OPSMAN_USERNAME: {{OPSMAN_USER}}
-      OPSMAN_PASSWORD: {{OPSMAN_PASSWORD}}
-      TILE_UPLOAD_TIMEOUT: {{TILE_UPLOAD_TIMEOUT}}
+      OPS_MGR_HOST: {{OPSMAN_URI}}
+      OPS_MGR_USR: {{OPSMAN_USER}}
+      OPS_MGR_PWD: {{OPSMAN_PASSWORD}}
+      PIVNET_API_TOKEN: {{TILE_UPLOAD_TIMEOUT}}
+      STEMCELL_GLOB: "*aws*"
+      NO_PROXY: ""
+      OM_IP: ""
   - task: stage-tile
     file: pcf-pipelines/tasks/stage-product/task.yml
     params:
