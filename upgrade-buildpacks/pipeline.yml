@@ -34,6 +34,7 @@ resources:
     api_token: {{pivnet_token}}
     product_slug: buildpacks
     product_version: Binary*
+    sort_by: semver
 
 - name: dotnet-core-buildpack
   type: pivnet
@@ -42,6 +43,7 @@ resources:
     api_token: {{pivnet_token}}
     product_slug: buildpacks
     product_version: .NET*
+    sort_by: semver
 
 - name: go-buildpack
   type: pivnet
@@ -50,6 +52,7 @@ resources:
     api_token: {{pivnet_token}}
     product_slug: buildpacks
     product_version: Go*
+    sort_by: semver
 
 - name: java-buildpack
   type: pivnet
@@ -58,6 +61,7 @@ resources:
     api_token: {{pivnet_token}}
     product_slug: buildpacks
     product_version: Java*
+    sort_by: semver
 
 - name: nodejs-buildpack
   type: pivnet
@@ -66,6 +70,7 @@ resources:
     api_token: {{pivnet_token}}
     product_slug: buildpacks
     product_version: NodeJS*
+    sort_by: semver
 
 - name: php-buildpack
   type: pivnet
@@ -74,6 +79,7 @@ resources:
     api_token: {{pivnet_token}}
     product_slug: buildpacks
     product_version: PHP*
+    sort_by: semver
 
 - name: python-buildpack
   type: pivnet
@@ -82,6 +88,7 @@ resources:
     api_token: {{pivnet_token}}
     product_slug: buildpacks
     product_version: Python*
+    sort_by: semver
 
 - name: ruby-buildpack
   type: pivnet
@@ -90,6 +97,7 @@ resources:
     api_token: {{pivnet_token}}
     product_slug: buildpacks
     product_version: Ruby*
+    sort_by: semver
 
 - name: staticfile-buildpack
   type: pivnet
@@ -98,6 +106,7 @@ resources:
     api_token: {{pivnet_token}}
     product_slug: buildpacks
     product_version: Staticfile*
+    sort_by: semver
 
 - name: tc-buildpack
   type: pivnet
@@ -106,6 +115,7 @@ resources:
     api_token: {{pivnet_token}}
     product_slug: buildpacks
     product_version: "tc Server*"
+    sort_by: semver
 
 - name: schedule
   type: time
